@@ -1,4 +1,4 @@
-## Slingshot Challenge
+## Finlio
 
 Attempting to create a portfolio / resume project, in submission for a challenge hosted on Slingshot, on June 11th, 2021. 
 
