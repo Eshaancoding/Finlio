@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <title>
+            Finlio Signup
+        </title>
+    </head>
+    <h1 class="Intro">Let's get you started!</h1>
+    <p class="SubIntro"> Thank you for your interest at Finlio</p>
+    <form method="POST" id="Form" class="Form" enctype="multipart/form-data" action="form.php">
+        <div class="FormBlock"> 
+            <h2>Personal Information:</h2>
+            <label class="Text" type="text" for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" value="" required><br>
+            <label class="Text" for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" value="" required><br>
+            <label class="Text" for="highschool">High School:</label><br>
+            <input type="text" id="highschool" name="highschool" value="" required><br>
+            <label class="Text" type="text" for="email">Email:</label><br>
+            <input type="text" id="email" name="email" value="" required><br>
+            <label class="Text" for="profile">Profile Picture:</label><br>
+            <div class="File">
+                <input type="file" id="profile" name="profile" value="" required><br>
+            </div>
+            <label class="Text" for="birth">Date of Birth:</label><br>
+            <input type="date" id="birth" name="birth" value="" required><br>
+            <br>
+        </div>
+        <div id="Projects" class="FormBlock"> 
+            <h2>Projects / Interests</h2>
+            <label class='Text' type="text0" for="interests">What are your interests?</label> <br> 
+            <input type="checkbox" id="ML_interest" name="ML_interest">Machine Learning<br>
+            <input type="checkbox" id="website_interest" name="website_interest">HTML/CSS/Javascript<br> 
+            <input type="checkbox" id="React_interest" name="React_interest">React<br>
+            <input type="checkbox" id="Robotics_interest" name="Robotics_interest">Robotics<br>
+            <input type="checkbox" id="Flutter_interest" name="Flutter_interest">Flutter<br>
+            <label class="Text" type="text" for="numberOfProj">How many projects have you done?</label><br>
+            <input type="number" id="numberOfProj" name="numberOfProj" onchange="projectChanged(this.value);" min=1 max=10 value=1 required> <br> 
+            <div class="projectBlock"> 
+                <label class='Text' type='text' for='projName1'>Project name 1:</label><br>
+                <input type='text' id='projName1' name='projName1' required><br>
+                <label class='Text' for='projDetails1'>Project Details 1:</label><br>
+                <input type='text' id='projDetails1' name='projDetails1' required><br><br>
+            </div>
+            <br>
+        </div>
+        <br><br>
+        <input class="submitButton" type="submit" value="Submit">
+      </form> 
+    <body>
+        <style>
+            body, html {
+                margin: 0px;
+                font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            p.SubIntro {
+                text-align: center;
+                font-size: 19px;
+            }
+            div.FormBlock {
+                border-radius: 10px;
+                border: 2px solid black;
+                margin-left: 150px;
+                margin-right: 150px;
+                margin-top: 45px;
+                height: fit-content;
+                line-height: 40px;
+                background-color: rgb(213, 213, 213);
+            }
+            div.projectBlock {
+                background-color: rgb(213, 213, 213);
+                border-radius: 10px;
+                border: 2px solid black;
+                margin-left: 170px;
+                margin-right: 170px;
+                margin-top: 45px;
+                height: fit-content;
+                line-height: 35px;
+            }
+            div.File {
+                position: relative;
+                left: 36px;
+            }
+            h1.Intro {
+                text-align: center;
+                margin-top: 30px;
+            }
+            form.Form {
+                text-align: center;
+                height: fit-content;
+            }
+            label.Text {
+                font-size: 20;
+                margin-top: 20px;
+            }
+
+            input.submitButton {
+                font-size: 20;
+                height: 40px;
+                width: 200px;
+                border: 2px solid black;
+                border-radius: 15px;
+            }            
+
+        </style>
+    </body> 
+    <script> 
+        function projectChanged(input) {    
+            let projects = document.getElementsByClassName("FormBlock")[1];
+            // get how many boxes
+            let current_boxes = projects.getElementsByClassName("projectBlock");
+            let current_len = current_boxes.length; 
+            if (input - current_len > 0) {
+                // Add any boxes, if any
+                for (let i = 0; i < input - current_len; i++) {
+                    // create box
+                    let projNum = i + current_len + 1;
+                    var div = document.createElement("div");
+                    div.className = "projectBlock";
+                    div.innerHTML += "\
+                    <label class='Text' type='text' for='projName"+projNum+"'>Project name "+projNum+":</label><br>\
+                    <input type='text' id='projName"+projNum+"' name='projName"+projNum+"' required><br>\
+                    <label class='Text' for='projDetails"+projNum+"'>Project Details "+projNum+":</label><br>\
+                    <input type='text' id='projDetails"+projNum+"' name='projDetails"+projNum+"' required><br><br>\
+                    ";
+                    projects.appendChild(div);
+                    projects.appendChild(document.createElement("br"))
+                }
+            } else {
+                // Delete any boxes
+                for (let i = 0; i < current_len - input; i++) {
+                    let to_delete = current_boxes[current_boxes.length-1]
+                    let to_another_delete = projects.children[projects.children.length - 1]
+                    document.getElementsByClassName("FormBlock")[1].removeChild(to_delete);
+                    document.getElementsByClassName("FormBlock")[1].removeChild(to_another_delete);
+                }
+                
+            }
+        }
+    </script>
+</html>
+
+<!-- 
+    C:/Users/eshaa/OneDrive/Desktop/SlingshotChallenge/action.php
+    ?fname=Eshaan&lname=Barkataki&highschool=High+Technology+High+School&email=eshaanbarkataki%40gmail.com
+    &profile=profile.jfif
+    &birth=2021-07-13&ML_interest=on&website_interest=on&numberOfProj=1&projName1=D&projDetails1=F&projName2=sdfads&projDetails2=gsdfsdf
+-->

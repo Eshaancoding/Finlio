@@ -1,0 +1,179 @@
+<html>
+    <head> 
+        <title> Finlio Explore</title>
+    </head> 
+    <body>
+        <h1 class="Intro"> Here are some of our amazing applicants at Finlio!</h1>
+        <div class="SearchBar"> 
+            <input type="text" class="search" name="search" onkeydown="if (event.keyCode == 13) {search_method(this.value); return false; }" placeholder="Enter the name you want to search, and then press Enter." required><br>
+        </div> <br>
+        <div class="Link">
+            <a class=Link href="main.html">Homepage</a>
+        </div>
+        <br><br> 
+        <div class="InterestBlocks">
+            <p class="BlockIntro" id="ml">Machine Learning</p> 
+        </div> <br>
+        <div class="InterestBlocks">
+            <p class="BlockIntro" id="web_dev">Web Development</p> 
+        </div> <br>
+        <div class="InterestBlocks">
+            <p class="BlockIntro" id="react">React</p> 
+        </div> <br>
+        <div class="InterestBlocks">
+            <p class="BlockIntro" id="robotics">Robotics</p> 
+        </div> <br>
+        <div class="InterestBlocks">
+            <p class="BlockIntro" id="flutter">Flutter</p> 
+        </div> <br>
+        <br>
+        <style>
+            body, html {
+                margin: 0px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                line-height: 50px;
+            }
+            div.Link {
+                text-align: center;
+                width: 15%;
+                height: 35px;
+                background-color: rgb(201, 201, 201);
+                border-radius: 30px;
+                border: 2px solid black;
+                position: relative;
+                margin: auto;
+            }
+            a.Link {
+                position: relative;
+                bottom: 7px;
+            }
+            h1.Intro {
+                text-align: center;
+                margin-top: 30px;
+            }
+            div.SearchBar {
+                width: 500px;
+                height: 45px;
+                background-color: rgb(201, 201, 201);
+                border-radius: 30px;
+                border: 2px solid black;
+                margin: auto;
+                margin-top: 30px;
+            }
+            input.search {
+                margin-top: 3px;
+                margin-left: 13px;
+                height: 40px;
+                width: 450px;
+                background-color: rgb(201, 201, 201);
+                border: 0px solid black;
+                outline: 0px;
+            }
+            div.InterestBlocks {
+                height: 50%;
+                width: 70%;
+                margin: auto;
+                background-color: rgb(209, 213, 141);
+                border: 2px solid black;
+                border-radius: 30px;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                position: relative;
+            }
+            p.BlockIntro {
+                margin-left: 30px;
+                margin-top: 20px;
+                font-size: 23;
+                font-weight: bold;
+            }
+            div.PersonBlock {
+                height: 70%;
+                width: 25%;
+                background-color: rgb(181, 230, 247);
+                border-radius: 30px;
+                border: 2px solid black;
+                position: absolute;
+                overflow-y: scroll;
+            }
+            img.Profile {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                border: 2px solid black;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+            p.Name {
+                width: 60%;
+                position: absolute;
+                top: 10px;
+                margin-left: 35%;
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 30px;
+            }
+            p.Info {
+                margin-left: 30px; 
+                line-height: 25px;
+                font-weight: normal;
+                font-size: 18;
+            }
+            ::-webkit-scrollbar {
+                display: none;
+            }
+        </style>
+        <script>
+            // load everything
+            let block_names = ["ml", "web_dev", "react", "robotics", "flutter"]
+            for (let i = 0; i < 5; i++) {
+                load_interest(block_names[i], "");
+            }
+
+            function search_method (search_name) {
+                // hide all the other blocks
+                document.getElementsByClassName("InterestBlocks")[1].style.opacity = 0;
+                document.getElementsByClassName("InterestBlocks")[2].style.opacity = 0;
+                document.getElementsByClassName("InterestBlocks")[3].style.opacity = 0;
+                document.getElementsByClassName("InterestBlocks")[4].style.opacity = 0;
+
+                // call load_interest
+                load_interest("ml", search_name);
+            }
+
+            function load_interest (block_name, name) {
+                let block = document.getElementById(block_name);
+                
+                if (name == "") {
+                    let block = document.getElementById("ml");
+                    block.innerHTML = "Machine Learning:"
+                    document.getElementsByClassName("InterestBlocks")[1].style.opacity = 1;
+                    document.getElementsByClassName("InterestBlocks")[2].style.opacity = 1;
+                    document.getElementsByClassName("InterestBlocks")[3].style.opacity = 1;
+                    document.getElementsByClassName("InterestBlocks")[4].style.opacity = 1;
+                }
+
+                // send request to load_interests_blocks.php
+                var data = new FormData();
+                data.append("interest", block_name);
+                data.append("name", name);
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', "load_interests_blocks.php");
+                xhr.onload = function () {
+                    if (name != "") {
+                        block.innerHTML = this.response;
+                    } else {
+                        block.innerHTML += this.response;
+                    }
+                }
+
+                xhr.send(data);
+            }
+
+            function showProfile (object) {
+                let name = object.getElementsByClassName("Name")[0].innerHTML.split(" ");
+                window.location = "view.php?firstName=" + name[0] + "&lastName=" + name[1];
+            }  
+        </script> 
+    </body>
+</html>
