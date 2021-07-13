@@ -15,4 +15,4 @@ This is my first application! Please email me at eshaanbarkataki@gmail.com if yo
 
 - Type in your browser "http://localhost/Finlio/main.html". The "localhost" is what XAMPP is hosting, Finlio is the name of this repository, and main.html is the main file. If you get the website, which should say "Finlio" at the top, then great! The website works! If it doesn't, please email me at eshaanbarkataki@gmail.com, or you can ping me at discord: SMILEYYY#0260.
 
-- Enjoy!
+- Enjoy! :)
