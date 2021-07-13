@@ -15,4 +15,4 @@ This is my first application! Please email me at eshaanbarkataki@gmail.com if yo
 
 - Type in your browser "http://localhost/Finlio/main.html". The "localhost" is what XAMPP is hosting, Finlio is the name of this repository, and main.html is the main file. If you get the website, which should say "Finlio" at the top, then great! The website works! If it doesn't, please email me at eshaanbarkataki@gmail.com, or you can ping me at discord: SMILEYYY#0260.
 
-- Enjoy! :)
+- At first, there will be no applicants when you click "Look at other portfolios" because the SQL database is empty. So I recommend creating a few portfolios so the SQL database can store some data and be used later. You can do this by clicking "Create a portfolio" and fill out some information (they can be random :) ). Then you could check "Look at other portfolios" at main.html to see what portfolios you have made! Enjoy! :)
