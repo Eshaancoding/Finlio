@@ -2,7 +2,7 @@
 
 Attempting to create a portfolio / resume project, in submission for a challenge hosted on Slingshot, on June 11th, 2021. 
 
-This is my first application! Please email me at eshaanbarkataki@gmail.com if you have any questions, or any concerns with my code. Any feedback is welcome! 
+This is my first web application! Please email me at eshaanbarkataki@gmail.com if you have any questions, or any concerns with my code. Any feedback is welcome! 
 
 
 ## How to run:
