@@ -4,6 +4,9 @@ Attempting to create a portfolio / resume project, in submission for a challenge
 
 This is my first web application! Please email me at eshaanbarkataki@gmail.com if you have any questions, or any concerns with my code. Any feedback is welcome! 
 
+## Demo:
+
+https://youtu.be/ZvEpSav9jHk
 
 ## How to run:
 
